@@ -1,0 +1,63 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="_43.MainWindow"
+        Title="_43">
+    <!--<StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+            <Button>Home</Button>
+            <Button>About</Button>
+            <Button>Blog's Main Topic 1</Button>
+            <Button>Blog's Main Topic 2</Button>
+        </StackPanel>
+        <DockPanel HorizontalAlignment="Stretch">
+            <Button DockPanel.Dock="Left">Home</Button>
+            <Button DockPanel.Dock="Left">About</Button>
+            <Button DockPanel.Dock="Left">Blog's Main Topic 1</Button>
+            <Button DockPanel.Dock="Right">RSS</Button>
+        </DockPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Top">Article 1</TextBlock>
+                <TextBlock DockPanel.Dock="Top">Article</TextBlock>
+                <Image DockPanel.Dock="Top"> </Image>
+                <TextBlock DockPanel.Dock="Bottom">Tags: Tag1 Tag2 Tag3 Tag4</TextBlock>
+                <TextBlock DockPanel.Dock="Bottom">Rate this article:</TextBlock>
+            </DockPanel>
+            <StackPanel>
+                <TextBlock>TextBlock is readonly</TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>-->
+    <Grid RowDefinitions = "auto, *" ColumnDefinitions = "*, auto">
+        <StackPanel Grid.Row = "0" Grid.Column = "0" Orientation="Horizontal" FlowDirection="LeftToRight">
+            <Button>Home</Button> 
+            <Button>About</Button>
+            <Button>Blog's Main Topic 1</Button>
+            <Button>Blog's Main Topic 2</Button>
+            <Button>Blog's Main Topic 3</Button>
+            <Button>Associated blogs</Button>
+        </StackPanel>
+        <DockPanel Grid.Row = "0" Grid.Column = "1">
+            <Button DockPanel.Dock="Right">RSS</Button>
+        </DockPanel>
+        <StackPanel Grid.Row = "1" Grid.Column = "0" Margin="0 20 0 0" Orientation = "Vertical">
+            <TextBlock Margin = "5 0 0 0 ">Article 1</TextBlock>
+            <TextBlock Margin = "5 15 0 0">Lorem ipsum</TextBlock>
+                <DockPanel Grid.Row="1" Grid.Column = "0" Margin = "0 5 0 0">
+                    <TextBlock Margin = "5 0 0 0">Tags:</TextBlock>
+                    <TextBlock Margin = "5 0 0 0">Tag 1</TextBlock>
+                    <TextBlock Margin = "5 0 0 0">Tag 2</TextBlock>
+                    <TextBlock Margin = "5 0 0 0">Tag 3</TextBlock>
+                    <TextBlock Margin = "5 0 0 0">Tag 4</TextBlock>
+                    <TextBlock Margin = "0 0 30 0" DockPanel.Dock = "Right">4/5</TextBlock>
+                    <TextBlock Margin = "5 0 0 0" DockPanel.Dock = "Right">Rate this article</TextBlock>
+                </DockPanel>
+        </StackPanel> 
+        <StackPanel Grid.Row = "1" Grid.Column = "1" Orientation = "Vertical">
+
+        </StackPanel>
+    </Grid>
+</Window>
