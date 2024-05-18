@@ -3,12 +3,67 @@
         xmlns:vm="using:mvvm44.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:infrastructure="clr-namespace:mvvm44.Infrastructure;assembly=mvvm44"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="mvvm44.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="mvvm44">
-    <Grid RowDefinitions = "auto, *" ColumnDefinitions = "*, 200">
+    
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid RowDefinitions = "auto, *" ColumnDefinitions="*, 250">
+
+        <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="2">
+            <DockPanel Grid.ColumnSpan="2">
+                <TextBlock Margin="5 0 0 0">Home</TextBlock>
+                <TextBlock Margin = "15 0 0 0">About</TextBlock>
+                <TextBlock Margin = "15 0 0 0">Blog's Main Topic 1</TextBlock>
+                <TextBlock Margin = "15 0 0 0">Blog's Main Topic 2</TextBlock>
+                <TextBlock Margin = "15 0 0 0">Blog's Main Topic 3</TextBlock>
+                <TextBlock Margin = "15 0 0 0">Associated blogs</TextBlock>
+                <TextBlock Margin="0 0 20 0" DockPanel.Dock="Right" TextAlignment="Right">RSS</TextBlock>
+            </DockPanel>
+        </Border>
+
+        <ListBox Grid.Row = "1" Grid.Column = "0" ItemsSource="{Binding BlogEntities}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Margin="10" Text="{Binding Article}"/>
+                            <TextBlock TextWrapping = "Wrap" Margin="10" Text="{Binding Text}"/>
+                            <Image Source="{Binding ImagePath, Converter={x:Static infrastructure:BitmapValueConverter.Instance}}" 
+                                   Width="700" 
+                                   HorizontalAlignment="Center" />
+                            <DockPanel Grid.Row="1" Grid.Column = "0" Margin = "0 5 0 0">
+                                <TextBlock Margin="0 10 0 0" > Tags: </TextBlock>
+                                <ListBox ItemsSource="{Binding TagsList}" />
+                                <TextBlock DockPanel.Dock = "Right" TextAlignment="Right" Margin="0 10 0 0" >4/5</TextBlock>
+                                <TextBlock DockPanel.Dock = "Right" TextAlignment="Right" Margin = "0 10 10 0">Rate this article:</TextBlock>
+                            </DockPanel>
+                        </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox Grid.Row = "1" Grid.Column = "1" ItemsSource="{Binding NewsEntities}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock TextWrapping = "Wrap" Text="{Binding Text}"/>
+                        <TextBlock TextAlignment="Right" TextDecorations="Underline">More</TextBlock>
+                        <TextBlock TextAlignment="Right" Text="{Binding PublishDate.Date}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+      
+    </Grid>
+    <!--Grid RowDefinitions = "auto, *" ColumnDefinitions = "*, 200">
         <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="2">
             <DockPanel Grid.ColumnSpan="2">
                 <TextBlock Margin="5 0 0 0">Home</TextBlock>
@@ -46,13 +101,5 @@
             <TextBlock TextAlignment="Right" TextDecorations="Underline" Margin = "0 0 5 0">More</TextBlock>
             <TextBlock TextAlignment="Right" Margin = "0 5 5 0">1 week ago</TextBlock>
         </StackPanel>
-    </Grid>
-    <!--<Design.DataContext>
-        <!- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) ->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/-->
-
+    </Grid-->
 </Window>
